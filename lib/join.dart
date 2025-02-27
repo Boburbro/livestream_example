@@ -1,3 +1,4 @@
+import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -10,6 +11,7 @@ class Join extends StatefulWidget {
 
 class _JoinState extends State<Join> {
   late VideoPlayerController _videoController;
+  ChewieController? _chewieController;
   bool _isInitialized = false;
 
   @override
@@ -25,7 +27,12 @@ class _JoinState extends State<Join> {
           setState(() {
             _isInitialized = true;
           });
-          _videoController.play();
+          _chewieController = ChewieController(
+            videoPlayerController: _videoController,
+            autoPlay: true,
+            looping: false,
+            showControls: true,
+          );
           debugPrint("Stream is playing");
         })
         .catchError((error) {
@@ -36,7 +43,7 @@ class _JoinState extends State<Join> {
       if (_videoController.value.hasError) {
         debugPrint("Video Error: ${_videoController.value.errorDescription}");
       }
-      setState(() {}); 
+      setState(() {});
     });
   }
 
@@ -44,10 +51,10 @@ class _JoinState extends State<Join> {
   void dispose() {
     _videoController.pause();
     _videoController.dispose();
+    _chewieController?.pause();
+    _chewieController?.dispose();
     super.dispose();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -55,14 +62,7 @@ class _JoinState extends State<Join> {
       appBar: AppBar(),
       body:
           _isInitialized && _videoController.value.size.width > 0
-              ? SizedBox(
-                width: _videoController.value.size.width * 0.5,
-                height: _videoController.value.size.height * 0.5,
-                child: AspectRatio(
-                  aspectRatio: _videoController.value.aspectRatio,
-                  child: VideoPlayer(_videoController),
-                ),
-              )
+              ? Chewie(controller: _chewieController!)
               : const Center(child: CircularProgressIndicator()),
     );
   }

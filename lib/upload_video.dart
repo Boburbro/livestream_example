@@ -105,7 +105,7 @@ class _UploadVideoState extends State<UploadVideo> {
     try {
       await _controller!.switchCamera();
       setState(() {
-        _isFrontCamera = !_isFrontCamera; 
+        _isFrontCamera = !_isFrontCamera;
       });
       print('Kamera almashtirildi: ${_isFrontCamera ? "Oldi" : "Orqa"}');
     } catch (e) {
@@ -117,47 +117,43 @@ class _UploadVideoState extends State<UploadVideo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Live Stream App')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (_isControllerInitialized && _controller != null)
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 400,
-                        width: 400,
-                        child: ApiVideoCameraPreview(controller: _controller!),
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            else
-              const SizedBox(
-                height: 400,
-                width: 400,
-                child: Center(child: CircularProgressIndicator()),
-              ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        children: [
+          if (_isControllerInitialized && _controller != null)
+            ApiVideoCameraPreview(controller: _controller!)
+          else
+            const SizedBox(
+              height: 400,
+              width: 400,
+              child: Center(child: CircularProgressIndicator()),
+            ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                ElevatedButton(
-                  onPressed: _toggleStreaming,
-                  child: Text(_isStreaming ? 'Stop Streaming' : 'Start Streaming'),
-                ),
-                const SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: _switchCamera,
-                  child: Text(_isFrontCamera ? 'Switch to Rear' : 'Switch to Front'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: _toggleStreaming,
+                      child: Text(
+                        _isStreaming ? 'Stop Streaming' : 'Start Streaming',
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    ElevatedButton(
+                      onPressed: _switchCamera,
+                      child: Text(
+                        _isFrontCamera ? 'Switch to Rear' : 'Switch to Front',
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

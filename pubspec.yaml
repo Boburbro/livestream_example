@@ -14,6 +14,7 @@ dependencies:
   
   flutter:
     sdk: flutter
+  chewie: ^1.10.0
 
 
 dev_dependencies:
