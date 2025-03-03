@@ -18,7 +18,7 @@ class _JoinState extends State<Join> {
   void initState() {
     super.initState();
     _videoController = VideoPlayerController.networkUrl(
-      Uri.parse('https://live.api.video/li7Zeq44iqnGr5dzJe3BE4Hq.m3u8'),
+      Uri.parse('https://82.148.1.150:1935/live/bozormedia/playlist.m3u8'),
     );
 
     _videoController

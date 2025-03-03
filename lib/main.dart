@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  CupertinoPageRoute(builder: (ctx) => const UploadVideo()),
+                  CupertinoPageRoute(builder: (ctx) => UploadVideo()),
                 );
               },
               child: const Text("Upload"),
