@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:livestream_example/cubit/stream_cubit.dart';
-import 'package:livestream_example/widget/my_dialog.dart';
 import 'package:rtmp_broadcaster/camera.dart';
+import 'widget/my_dialog.dart';
 
 class UploadVideo extends StatelessWidget {
   const UploadVideo({super.key});
@@ -16,7 +16,6 @@ class UploadVideo extends StatelessWidget {
         body: BlocConsumer<UploadVideoCubit, UploadVideoState>(
           listener: (context, state) {
             if (state.errorMessage != null) {
-              print("ERROR: ${state.errorMessage}");
               showErrorDialog(context, state.errorMessage!);
               context.read<UploadVideoCubit>().setNullErrorMessage();
             }
@@ -44,7 +43,10 @@ class UploadVideo extends StatelessWidget {
                         children: [
                           ElevatedButton(
                             onPressed:
-                                state.isLoading ? null : cubit.toggleStreaming,
+                                state.isLoading || state.errorMessage != null
+                                    ? null
+                                    : cubit
+                                        .toggleStreaming,
                             child: Text(
                               state.isStreaming
                                   ? 'Stop Streaming'
@@ -54,7 +56,10 @@ class UploadVideo extends StatelessWidget {
                           const SizedBox(width: 20),
                           ElevatedButton(
                             onPressed:
-                                state.isLoading ? null : cubit.switchCamera,
+                                state.isLoading || state.errorMessage != null
+                                    ? null
+                                    : cubit
+                                        .switchCamera,
                             child: Text(
                               state.isFrontCamera
                                   ? 'Switch to Rear'

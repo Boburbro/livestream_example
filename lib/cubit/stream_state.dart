@@ -1,42 +1,43 @@
-part of 'stream_cubit.dart';
+part of "stream_cubit.dart";
 
 class UploadVideoState extends Equatable {
+  final bool isLoading;
   final bool isStreaming;
   final bool isControllerInitialized;
   final bool isFrontCamera;
-  final bool isLoading;
   final String? errorMessage;
 
   const UploadVideoState({
+    this.isLoading = false,
     this.isStreaming = false,
     this.isControllerInitialized = false,
-    this.isFrontCamera = true,
-    this.isLoading = false,
+    this.isFrontCamera = false,
     this.errorMessage,
   });
 
   UploadVideoState copyWith({
+    bool? isLoading,
     bool? isStreaming,
     bool? isControllerInitialized,
     bool? isFrontCamera,
-    bool? isLoading,
     String? errorMessage,
   }) {
     return UploadVideoState(
+      isLoading: isLoading ?? this.isLoading,
       isStreaming: isStreaming ?? this.isStreaming,
       isControllerInitialized:
           isControllerInitialized ?? this.isControllerInitialized,
       isFrontCamera: isFrontCamera ?? this.isFrontCamera,
-      isLoading: isLoading ?? this.isLoading,
-      errorMessage: errorMessage ?? this.errorMessage,
+      errorMessage: errorMessage,
     );
   }
 
   @override
   List<Object?> get props => [
+    isLoading,
     isStreaming,
     isControllerInitialized,
     isFrontCamera,
-    isLoading,
+    errorMessage,
   ];
 }
