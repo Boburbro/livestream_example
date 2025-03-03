@@ -17,7 +17,6 @@ class UploadVideo extends StatelessWidget {
           listener: (context, state) {
             if (state.errorMessage != null) {
               showErrorDialog(context, state.errorMessage!);
-              context.read<UploadVideoCubit>().setNullErrorMessage();
             }
           },
           builder: (context, state) {
@@ -45,8 +44,7 @@ class UploadVideo extends StatelessWidget {
                             onPressed:
                                 state.isLoading || state.errorMessage != null
                                     ? null
-                                    : cubit
-                                        .toggleStreaming,
+                                    : cubit.toggleStreaming,
                             child: Text(
                               state.isStreaming
                                   ? 'Stop Streaming'
@@ -58,8 +56,7 @@ class UploadVideo extends StatelessWidget {
                             onPressed:
                                 state.isLoading || state.errorMessage != null
                                     ? null
-                                    : cubit
-                                        .switchCamera,
+                                    : cubit.switchCamera,
                             child: Text(
                               state.isFrontCamera
                                   ? 'Switch to Rear'
