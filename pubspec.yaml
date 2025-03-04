@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   
-  apivideo_live_stream: ^1.2.0 
+
   permission_handler: ^11.4.0
   video_player: ^2.9.3
   chewie: ^1.10.0
@@ -16,6 +16,7 @@ dependencies:
 
   flutter:
     sdk: flutter
+
   rtmp_broadcaster: ^2.3.4
   equatable: ^2.0.7
   flutter_bloc: ^9.1.0

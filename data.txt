@@ -1,0 +1,107 @@
+Launching lib/main.dart on Redmi 8 in debug mode...
+Running Gradle task 'assembleDebug'...                             48.7s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          15.5s
+I/flutter (17057): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(60)] Using the Impeller rendering backend (Vulkan).
+I/chatty  (17057): uid=10784(uz.assoft.livestream_example) identical 1 line
+D/ForceDarkHelper(17057): updateByCheckExcludeList: pkg: uz.assoft.livestream_example activity: uz.assoft.livestream_example.MainActivity@60b7dc7
+Syncing files to device Redmi 8...                                 155ms
+
+Flutter run key commands.
+r Hot reload. 🔥🔥🔥
+R Hot restart.
+h List all available interactive commands.
+d Detach (terminate "flutter run" but leave application running).
+c Clear the screen
+q Quit (terminate the application on the device).
+
+A Dart VM Service on Redmi 8 is available at: http://127.0.0.1:46599/0_O5MaZ4MDk=/
+I/estream_exampl(17057): ProcessProfilingInfo new_methods=789 is saved saved_to_disk=1 resolve_classes_delay=8000
+W/Looper  (17057): Slow Looper main: Activity uz.assoft.livestream_example/.MainActivity is 10318ms late (wall=1ms running=0ms ClientTransaction{ callbacks=[android.app.servertransaction.TopResumedActivityChangeItem] }) because of 2 msg, msg 1 took 1315ms (seq=2 late=4ms h=android.app.ActivityThread$H w=110), msg 2 took 5933ms (seq=3 late=1219ms h=android.app.ActivityThread$H w=159)
+I/Choreographer(17057): Skipped 549 frames!  The application may be doing too much work on its main thread.
+The Flutter DevTools debugger and profiler on Redmi 8 is available at: http://127.0.0.1:9101?uri=http://127.0.0.1:46599/0_O5MaZ4MDk=/
+I/AdrenoGLES(17057): QUALCOMM build                   : 9d44e36, Ie3bb699d95
+I/AdrenoGLES(17057): Build Date                       : 09/29/20
+I/AdrenoGLES(17057): OpenGL ES Shader Compiler Version: EV031.27.05.02
+I/AdrenoGLES(17057): Local Branch                     : 
+I/AdrenoGLES(17057): Remote Branch                    : refs/tags/AU_LINUX_ANDROID_LA.UM.8.6.2.R1.10.00.00.537.053
+I/AdrenoGLES(17057): Remote Branch                    : NONE
+I/AdrenoGLES(17057): Reconstruct Branch               : NOTHING
+I/AdrenoGLES(17057): Build Config                     : S L 8.0.10 AArch64
+I/AdrenoGLES(17057): PFP: 0x005ff112, ME: 0x005ff066
+W/Gralloc3(17057): mapper 3.x is not supported
+W/Looper  (17057): Slow Looper main: doFrame is 9150ms late because of 5 msg, msg 1 took 1315ms (seq=2 late=4ms h=android.app.ActivityThread$H w=110), msg 2 took 5933ms (seq=3 late=1219ms h=android.app.ActivityThread$H w=159)
+W/Looper  (17057): Slow Looper main: doFrame is 426ms late because of 11 msg, msg 1 took 260ms (seq=7 late=9150ms h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver)
+D/ProfileInstaller(17057): Installing profile for uz.assoft.livestream_example
+W/InputEventReceiver(17057): App Input: Dispatching InputEvent took 244ms in main thread! (MotionEvent: event_seq=0, seq=284121, action=ACTION_DOWN)
+W/InputEventReceiver(17057): App Input: Dispatching InputEvent took 179ms in main thread! (MotionEvent: event_seq=1, seq=284123, action=ACTION_UP)
+I/flutter (17057): [IMPORTANT:flutter/shell/platform/android/platform_view_android.cc(308)] Flutter recommends migrating plugins that create and register surface textures to the new surface producer API. See https://docs.flutter.dev/release/breaking-changes/android-surface-plugins
+I/ExoPlayerImpl(17057): Init 84265b5 [AndroidXMedia3/1.4.1] [olive, Redmi 8, Xiaomi, 29]
+W/estream_exampl(17057): Accessing hidden method Landroid/media/AudioTrack;->getLatency()I (greylist, reflection, allowed)
+I/DpmTcmClient(17057): RegisterTcmMonitor from: $Proxy0
+D/NetworkSecurityConfig(17057): No Network Security Config specified, using platform default
+E/ExoPlayerImplInternal(17057): Playback error
+E/ExoPlayerImplInternal(17057):   androidx.media3.exoplayer.ExoPlaybackException: Source error
+E/ExoPlayerImplInternal(17057):       at androidx.media3.exoplayer.ExoPlayerImplInternal.handleIoException(ExoPlayerImplInternal.java:736)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.exoplayer.ExoPlayerImplInternal.handleMessage(ExoPlayerImplInternal.java:708)
+E/ExoPlayerImplInternal(17057):       at android.os.Handler.dispatchMessage(Handler.java:103)
+E/ExoPlayerImplInternal(17057):       at android.os.Looper.loop(Looper.java:223)
+E/ExoPlayerImplInternal(17057):       at android.os.HandlerThread.run(HandlerThread.java:67)
+E/ExoPlayerImplInternal(17057):   Caused by: androidx.media3.datasource.HttpDataSource$CleartextNotPermittedException: Cleartext HTTP traffic not permitted. See https://developer.android.com/guide/topics/media/issues/cleartext-not-permitted
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DefaultHttpDataSource.open(DefaultHttpDataSource.java:366)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DefaultDataSource.open(DefaultDataSource.java:275)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.StatsDataSource.open(StatsDataSource.java:86)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DataSourceInputStream.checkOpened(DataSourceInputStream.java:101)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DataSourceInputStream.open(DataSourceInputStream.java:64)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.exoplayer.upstream.ParsingLoadable.load(ParsingLoadable.java:182)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.exoplayer.upstream.Loader$LoadTask.run(Loader.java:421)
+E/ExoPlayerImplInternal(17057):       at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+E/ExoPlayerImplInternal(17057):       at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+E/ExoPlayerImplInternal(17057):       at java.lang.Thread.run(Thread.java:919)
+E/ExoPlayerImplInternal(17057):   Caused by: java.io.IOException: Cleartext HTTP traffic to 82.148.1.150 not permitted
+E/ExoPlayerImplInternal(17057):       at com.android.okhttp.HttpHandler$CleartextURLFilter.checkURLPermitted(HttpHandler.java:124)
+E/ExoPlayerImplInternal(17057):       at com.android.okhttp.internal.huc.HttpURLConnectionImpl.execute(HttpURLConnectionImpl.java:462)
+E/ExoPlayerImplInternal(17057):       at com.android.okhttp.internal.huc.HttpURLConnectionImpl.connect(HttpURLConnectionImpl.java:131)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DefaultHttpDataSource.makeConnection(DefaultHttpDataSource.java:641)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DefaultHttpDataSource.makeConnection(DefaultHttpDataSource.java:538)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DefaultHttpDataSource.open(DefaultHttpDataSource.java:360)
+E/ExoPlayerImplInternal(17057):       ... 9 more
+I/flutter (17057): [31m[ERROR] Video Player Initialization Error: PlatformException(VideoError, Video player had error androidx.media3.exoplayer.ExoPlaybackException: Source error, null, null)[0m
+I/flutter (17057): [IMPORTANT:flutter/shell/platform/android/platform_view_android.cc(308)] Flutter recommends migrating plugins that create and register surface textures to the new surface producer API. See https://docs.flutter.dev/release/breaking-changes/android-surface-plugins
+I/ExoPlayerImpl(17057): Init 806f4dd [AndroidXMedia3/1.4.1] [olive, Redmi 8, Xiaomi, 29]
+E/ExoPlayerImplInternal(17057): Playback error
+E/ExoPlayerImplInternal(17057):   androidx.media3.exoplayer.ExoPlaybackException: Source error
+E/ExoPlayerImplInternal(17057):       at androidx.media3.exoplayer.ExoPlayerImplInternal.handleIoException(ExoPlayerImplInternal.java:736)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.exoplayer.ExoPlayerImplInternal.handleMessage(ExoPlayerImplInternal.java:708)
+E/ExoPlayerImplInternal(17057):       at android.os.Handler.dispatchMessage(Handler.java:103)
+E/ExoPlayerImplInternal(17057):       at android.os.Looper.loop(Looper.java:223)
+E/ExoPlayerImplInternal(17057):       at android.os.HandlerThread.run(HandlerThread.java:67)
+E/ExoPlayerImplInternal(17057):   Caused by: androidx.media3.datasource.HttpDataSource$CleartextNotPermittedException: Cleartext HTTP traffic not permitted. See https://developer.android.com/guide/topics/media/issues/cleartext-not-permitted
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DefaultHttpDataSource.open(DefaultHttpDataSource.java:366)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DefaultDataSource.open(DefaultDataSource.java:275)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.StatsDataSource.open(StatsDataSource.java:86)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DataSourceInputStream.checkOpened(DataSourceInputStream.java:101)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DataSourceInputStream.open(DataSourceInputStream.java:64)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.exoplayer.upstream.ParsingLoadable.load(ParsingLoadable.java:182)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.exoplayer.upstream.Loader$LoadTask.run(Loader.java:421)
+E/ExoPlayerImplInternal(17057):       at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+E/ExoPlayerImplInternal(17057):       at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+E/ExoPlayerImplInternal(17057):       at java.lang.Thread.run(Thread.java:919)
+E/ExoPlayerImplInternal(17057):   Caused by: java.io.IOException: Cleartext HTTP traffic to 82.148.1.150 not permitted
+E/ExoPlayerImplInternal(17057):       at com.android.okhttp.HttpHandler$CleartextURLFilter.checkURLPermitted(HttpHandler.java:124)
+E/ExoPlayerImplInternal(17057):       at com.android.okhttp.internal.huc.HttpURLConnectionImpl.execute(HttpURLConnectionImpl.java:462)
+E/ExoPlayerImplInternal(17057):       at com.android.okhttp.internal.huc.HttpURLConnectionImpl.connect(HttpURLConnectionImpl.java:131)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DefaultHttpDataSource.makeConnection(DefaultHttpDataSource.java:641)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DefaultHttpDataSource.makeConnection(DefaultHttpDataSource.java:538)
+E/ExoPlayerImplInternal(17057):       at androidx.media3.datasource.DefaultHttpDataSource.open(DefaultHttpDataSource.java:360)
+E/ExoPlayerImplInternal(17057):       ... 9 more
+I/flutter (17057): [31m[ERROR] Video Player Initialization Error: PlatformException(VideoError, Video player had error androidx.media3.exoplayer.ExoPlaybackException: Source error, null, null)[0m
+Lost connection to device.
+Connected devices:
+Redmi 8 (mobile)                      • 97bb68320007  • android-arm64  • Android 10 (API 29)
+Android SDK built for x86 64 (mobile) • emulator-5554 • android-x64    • Android 9 (API 28) (emulator)
+Chrome (web)                          • chrome        • web-javascript • Google Chrome 133.0.6943.141
+[1]: Redmi 8 (97bb68320007)
+[2]: Android SDK built for x86 64 (emulator-5554)
+[3]: Chrome (chrome)
+Please choose one (or "q" to quit): 
