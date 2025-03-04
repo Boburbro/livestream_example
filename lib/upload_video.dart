@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/stream_cubit.dart';
 import 'package:rtmp_broadcaster/camera.dart';
-import 'widget/my_dialog.dart';
+import 'widget/error_dialog.dart';
 
 class UploadVideo extends StatelessWidget {
   const UploadVideo({super.key});
