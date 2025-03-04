@@ -164,14 +164,52 @@ class UploadVideoCubit extends Cubit<UploadVideoState> {
         orElse: () => cameras[0],
       );
 
+      if (state.isStreaming ||
+          (_controller!.value.isStreamingVideoRtmp ?? false)) {
+        AppLogger.warning('Stopping RTMP stream');
+        try {
+          await _controller!.stopVideoStreaming();
+        } catch (e) {
+          AppLogger.warning('Failed to stop RTMP stream: $e');
+        }
+        AppLogger.warning('RTMP stream stopped');
+      }
+
+      AppLogger.warning('Disposing old controller');
       await _controller!.dispose();
+      _controller = null;
+      AppLogger.warning('Old controller disposed');
+
       _controller = CameraController(
         newCamera,
         ResolutionPreset.high,
         enableAudio: true,
       );
+      AppLogger.warning('Initializing new controller');
       await _controller!.initialize();
-      emit(state.copyWith(isFrontCamera: !state.isFrontCamera));
+      AppLogger.warning('New controller initialized');
+
+      if (state.isStreaming) {
+        AppLogger.warning('Starting RTMP stream with new controller');
+        await _controller!.startVideoStreaming(AppConstants.rtmp);
+        await Future.delayed(const Duration(seconds: 1));
+        if (_controller!.value.isStreamingVideoRtmp ?? false) {
+          AppLogger.warning('RTMP stream started successfully');
+        } else {
+          AppLogger.warning('Failed to restart RTMP stream');
+          await emitError(
+            'Failed to restart streaming: ${_controller!.value.errorDescription ?? "Check server or auth"}',
+          );
+          return;
+        }
+      }
+
+      emit(
+        state.copyWith(
+          isFrontCamera: !state.isFrontCamera,
+          isControllerInitialized: true,
+        ),
+      );
     } catch (e) {
       AppLogger.error('Failed to switch camera: $e');
       await emitError('Failed to switch camera: $e');
