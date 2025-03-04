@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:livestream_example/join.dart';
-import 'package:livestream_example/upload_video.dart';
+import 'join.dart';
+import 'upload_video.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +12,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: HomeScreen());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(appBarTheme: AppBarTheme(centerTitle: true)),
+      home: HomeScreen(),
+    );
   }
 }
 

@@ -1,6 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:livestream_example/utils/app_logger.dart';
+import 'constants/app_constants.dart';
+import 'utils/app_logger.dart';
 import 'package:video_player/video_player.dart';
 
 class Join extends StatefulWidget {
@@ -24,9 +25,7 @@ class _JoinState extends State<Join> {
 
   Future<void> _initializeVideoPlayer() async {
     _videoController = VideoPlayerController.networkUrl(
-      Uri.parse(
-        'http://82.148.1.150:1935/live/bozormedia/playlist.m3u8?wowzatoken=id=1ec1a854d01f6a73',
-      ),
+      Uri.parse(AppConstants.m3u8),
     );
 
     try {
@@ -79,7 +78,6 @@ class _JoinState extends State<Join> {
         _errorMessage = 'Video Playback Error: $errorDesc';
       });
     }
-    // Agar video o‘ynayotgan bo‘lsa va xatolik bo‘lmasa, _errorMessage ni tozalash
     if (_videoController.value.isPlaying && _errorMessage != null) {
       if (!mounted) return;
       setState(() {

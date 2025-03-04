@@ -1,7 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:livestream_example/utils/app_logger.dart';
-import 'package:livestream_example/utils/debounce.dart';
+import '../constants/app_constants.dart';
+import '../utils/app_logger.dart';
+import '../utils/debounce.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:rtmp_broadcaster/camera.dart';
 
@@ -118,9 +119,7 @@ class UploadVideoCubit extends Cubit<UploadVideoState> {
         emit(state.copyWith(isStreaming: false));
       } else {
         emit(state.copyWith(isLoading: true));
-        await _controller!.startVideoStreaming(
-          "rtmp://82.148.1.150:1935/live/bozormedia",
-        );
+        await _controller!.startVideoStreaming(AppConstants.rtmp);
         await Future.delayed(const Duration(seconds: 1));
         if (state.errorMessage != null) {
           emit(state.copyWith(isLoading: false));
