@@ -65,6 +65,11 @@ class _JoinState extends State<Join> {
       setState(() {
         _errorMessage = 'Failed to initialize video: $error';
       });
+      Future.delayed(const Duration(seconds: 5), () {
+        if (mounted && _errorMessage != null) {
+          _initializeVideoPlayer();
+        }
+      });
     }
   }
 
@@ -142,7 +147,9 @@ class _JoinState extends State<Join> {
       );
     }
 
-    if (!_isInitialized || _videoController.value.size.width <= 0) {
+    if (!_isInitialized ||
+        _videoController.value.size.width <= 0 ||
+        _chewieController == null) {
       return const Center(child: CircularProgressIndicator());
     }
 
