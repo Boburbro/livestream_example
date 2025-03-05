@@ -164,43 +164,49 @@ class UploadVideoCubit extends Cubit<UploadVideoState> {
         orElse: () => cameras[0],
       );
 
-      if (state.isStreaming ||
-          (_controller!.value.isStreamingVideoRtmp ?? false)) {
-        AppLogger.warning('Stopping RTMP stream');
+      bool wasStreaming =
+          state.isStreaming ||
+          (_controller!.value.isStreamingVideoRtmp ?? false);
+
+      if (wasStreaming) {
+        AppLogger.warning('Stopping RTMP stream before switching camera');
         try {
           await _controller!.stopVideoStreaming();
+          AppLogger.warning('RTMP stream stopped successfully');
         } catch (e) {
           AppLogger.warning('Failed to stop RTMP stream: $e');
         }
-        AppLogger.warning('RTMP stream stopped');
       }
 
-      AppLogger.warning('Disposing old controller');
+      AppLogger.warning('Disposing old camera controller');
       await _controller!.dispose();
       _controller = null;
-      AppLogger.warning('Old controller disposed');
 
+      AppLogger.warning('Initializing new camera controller');
       _controller = CameraController(
         newCamera,
         ResolutionPreset.high,
         enableAudio: true,
       );
-      AppLogger.warning('Initializing new controller');
-      await _controller!.initialize();
-      AppLogger.warning('New controller initialized');
 
-      if (state.isStreaming) {
-        AppLogger.warning('Starting RTMP stream with new controller');
-        await _controller!.startVideoStreaming(AppConstants.rtmp);
-        await Future.delayed(const Duration(seconds: 1));
-        if (_controller!.value.isStreamingVideoRtmp ?? false) {
-          AppLogger.warning('RTMP stream started successfully');
-        } else {
-          AppLogger.warning('Failed to restart RTMP stream');
-          await emitError(
-            'Failed to restart streaming: ${_controller!.value.errorDescription ?? "Check server or auth"}',
-          );
-          return;
+      await _controller!.initialize();
+      AppLogger.warning('New camera controller initialized');
+
+      if (wasStreaming) {
+        AppLogger.warning('Restarting RTMP stream with new controller');
+        try {
+          await _controller!.startVideoStreaming(AppConstants.rtmp);
+          await Future.delayed(const Duration(seconds: 1));
+          if (_controller!.value.isStreamingVideoRtmp ?? false) {
+            AppLogger.warning('RTMP stream restarted successfully');
+          } else {
+            await emitError(
+              'Failed to restart streaming: ${_controller!.value.errorDescription ?? "Check server or auth"}',
+            );
+            return;
+          }
+        } catch (e) {
+          await emitError('Error restarting stream: $e');
         }
       }
 

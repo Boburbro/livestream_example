@@ -21,7 +21,6 @@ class UploadVideo extends StatelessWidget {
           },
           builder: (context, state) {
             final cubit = context.read<UploadVideoCubit>();
-
             return Stack(
               children: [
                 if (state.isControllerInitialized && cubit.controller != null)
@@ -32,6 +31,7 @@ class UploadVideo extends StatelessWidget {
                     width: 400,
                     child: Center(child: CircularProgressIndicator()),
                   ),
+
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
@@ -54,9 +54,12 @@ class UploadVideo extends StatelessWidget {
                           const SizedBox(width: 20),
                           ElevatedButton(
                             onPressed:
-                                state.isLoading || state.errorMessage != null
+                                state.isStreaming
                                     ? null
-                                    : cubit.switchCamera,
+                                    : (state.isLoading ||
+                                            state.errorMessage != null
+                                        ? null
+                                        : cubit.switchCamera),
                             child: Text(
                               state.isFrontCamera
                                   ? 'Switch to Rear'
